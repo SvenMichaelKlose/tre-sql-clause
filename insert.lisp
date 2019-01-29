@@ -14,4 +14,4 @@
                   ",")
              ") VALUES ("
              (pad (@ [+ "\"" (escape-string _) "\""] (cdrlist fields)) ",")
-     	     ")"))))
+             ")"))))

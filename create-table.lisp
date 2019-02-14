@@ -2,7 +2,9 @@
   (with (name  table-definition.
          cols  .table-definition.)
     (apply #'+ `("CREATE TABLE " ,name " ("
-                 ,@(& auto-increment
-                      `("id INTEGER PRIMARY KEY " ,auto-increment ","))
-                 ,@(pad (@ [+ _. " " (? have-types? ._. "")] cols) ",")
+                 ,@(pad (@ [+ _. " " (? have-types? ._. "")]
+                           `(,@(& auto-increment
+                                  (list (list "id" (+ "INTEGER PRIMARY KEY " (| auto-increment "")))))
+                             ,@cols))
+                        ",")
                  ")"))))
